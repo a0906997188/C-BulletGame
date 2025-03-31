@@ -1380,7 +1380,6 @@ MonoBehaviour:
   Score: 0
   ScoreObject: {fileID: 578147883}
   TimeDownCount: {fileID: 1248143616}
-  onTime: 0
   TargetScore: 10
   TargetScoreObject: {fileID: 638923701}
   Boy: {fileID: 1816278874}
@@ -2032,8 +2031,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 989bb28f726db104d8172f7745394011, type: 3}
-  m_Resource: {fileID: 8300000, guid: 989bb28f726db104d8172f7745394011, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a0f1abf976cb8e646854bcbd63b31043, type: 3}
+  m_Resource: {fileID: 8300000, guid: a0f1abf976cb8e646854bcbd63b31043, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1

@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     public GameObject TimeDownCount;
     TextMeshProUGUI ScoreText;//記分板
     TextMeshProUGUI TimeLast;//時間倒數
-    public bool onTime = false;//時間到了
     public int TargetScore = 10;//目標分數
     public GameObject TargetScoreObject;//目標分數的物件
     TextMeshProUGUI TargetScoreText;//目標分數的文字
@@ -28,6 +27,7 @@ public class GameManager : MonoBehaviour
     public GameObject Boy;//男孩
 
     public int FatherDisappearTime = 10;//父親消失時間
+    bool onTime = false;
 
 
     public static GameManager Instance;
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     public void StartTheGame()
     {
         MusicController.Instance.PlayMusic(true);
-        StartCoroutine(TheFather());
+        if(FatherImage != null) StartCoroutine(TheFather());
         StartCoroutine(InstantiateDream());
         StartCoroutine(StartCountdown(StartTime));
     }
