@@ -20,9 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ToBeContinue.unity
     guid: 74c3216b1cd47324a8d6e636eaf9409d
-  - enabled: 1
-    path: Assets/Scenes/LoseScene.unity
-    guid: 2d88fda515082ca4d81cfb64a20a65b7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
