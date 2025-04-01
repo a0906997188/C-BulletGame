@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 public class MusicController : MonoBehaviour
@@ -17,7 +18,7 @@ public class MusicController : MonoBehaviour
         if(b)
         {
             AudioSource g = transform.GetChild(0).gameObject.GetComponent<AudioSource>();
-            g.Play();
+            g.DOPlay();
             g.DOFade(0.4f, 3);
         }
         else
@@ -25,5 +26,19 @@ public class MusicController : MonoBehaviour
             AudioSource g = transform.GetChild(0).gameObject.GetComponent<AudioSource>();
             g.DOFade(0, 3).OnComplete(() => { Destroy(gameObject); });
         }
+
     }
+
+    /// <summary>
+    /// 等待音樂播放完畢
+    /// </summary>
+    /// <param name="a"></param>
+    /// <returns></returns>
+    public IEnumerator WaitForMusicEnd(GameObject a)
+    {
+        AudioSource b = a.transform.GetChild(0).GetComponent<AudioSource>();
+        yield return new WaitWhile(() => b.isPlaying);
+    }
+
+
 }
