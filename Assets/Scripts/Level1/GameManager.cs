@@ -9,9 +9,9 @@ public class GameManager : MonoBehaviour
 {
 
     public float StartTime = 30f;
-    public GameObject[] Dreams;//儲存夢的陣列
-    public GameObject[] Vaxations;//儲存煩惱的陣列
-    public float DreamDispearTime = 3;
+    public GameObject Dream;
+    public GameObject Vaxation;
+    GameObject[] DreamArray;
     public GameObject FatherImage;
 
     //分數
@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        DreamArray =new GameObject[]{ Dream, Vaxation };
         ScoreText = ScoreObject.GetComponent<TextMeshProUGUI>();
         TimeLast = TimeDownCount.GetComponent<TextMeshProUGUI>();
         TargetScoreText = TargetScoreObject.GetComponent<TextMeshProUGUI>();
@@ -118,21 +119,15 @@ public class GameManager : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     IEnumerator InstantiateDream()
-    {   float MaxRandomTime = 2.5f;
-        GameObject g = new GameObject("Dream");
+    {   float MaxRandomTime = 3f;
         //隨機時間到就生成夢境
         while (true)
         {
-            GameObject[][] claudes = new GameObject[][] {Dreams,Vaxations};//儲存夢及煩惱的2階數組
-            GameObject[] claude = claudes[Random.Range(0, claudes.Length)];//隨機為夢或是煩惱
-            GameObject c = claude[Random.Range(0, claude.Length)];//隨機到的物件
-            int a = claude.Length;//隨機到的陣列長度
-            GameObject Ins = Instantiate(c,new Vector2(Random.Range(-8,8.5f),Random.Range(-4,4f)),Quaternion.identity);
-            Ins.transform.SetParent(g.transform);
+            GameObject claude = Instantiate(DreamArray[Random.Range(0,2)],new Vector2(Random.Range(-7.75f,7f),Random.Range(-4.65f,3.5f)),Quaternion.identity);
+
             yield return new WaitForSeconds(Random.Range(0, MaxRandomTime));
             if (onTime)
             {
-                Destroy(g);
                 break;
             }
         }
@@ -177,21 +172,19 @@ public class GameManager : MonoBehaviour
         WinOrLose();
     }
 
-    public GameObject WinPanel;
-    public GameObject LosePanel;
     void WinOrLose()
     {
         if (Score >= TargetScore)
         {
             MusicController.Instance.PlayMusic(false);
             Debug.Log("Win");
-            WinPanel.SetActive(!WinPanel.activeInHierarchy);
+            SceneManager.LoadScene(4);
         }
         else
         {
             MusicController.Instance.PlayMusic(false);
             Debug.Log("Lose");
-            LosePanel.SetActive(!WinPanel.activeInHierarchy);
+            SceneManager.LoadScene(5);
         }
     }
 }

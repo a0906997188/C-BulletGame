@@ -9,12 +9,12 @@ public class DreamController : MonoBehaviour
         StartCoroutine(ItWillDispear());
     }
     /// <summary>
-    /// 幾秒消失
+    /// 3.5秒後消失
     /// </summary>
     /// <returns></returns>
     IEnumerator ItWillDispear()
     {
-        yield return new WaitForSeconds(GameManager.Instance.DreamDispearTime);
+        yield return new WaitForSeconds(3.5f);
         if(gameObject.CompareTag("Dream"))
         {
             GameManager.Instance.DisappearDream(gameObject, 0);

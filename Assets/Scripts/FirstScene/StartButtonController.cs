@@ -3,13 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class StartButtonController : MonoBehaviour
 {
-    public void OpenLevelChoosePanel()
+    public void OpenLevelChoose()
     {
-        GameObject a = transform.GetChild(3).gameObject;
-        a.SetActive(!a.activeInHierarchy);
+        transform.parent.GetChild(3).gameObject.SetActive(true);
     }
-
-
+    public void CloseLevelChoose()
+    {
+        transform.parent.GetChild(3).gameObject.SetActive(false);
+    }
     public void LoadLevel0()
     {
         SceneManager.LoadScene(0);
